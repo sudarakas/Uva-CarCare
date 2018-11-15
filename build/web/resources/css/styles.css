@@ -216,6 +216,23 @@ body{
 .modal-dialog {width:600px;}
 .thumbnail {margin-bottom:6px;}
 
+
+/*Contact Us*/
+.row-centered{
+    text-align:center;
+}
+
+.col-centered{
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+    text-align: center;
+    background-color: #ccc;
+    border: 1px solid #ddd;
+}
 /*Media Queries - Responsive*/
 
 @media(max-width: 991px){
