@@ -1,0 +1,14 @@
+SMAP
+newjob_jsp.java
+JSP
+*S JSP
+*F
++ 0 newjob.jsp
+admin/newjob.jsp
+*L
+5,20:44
+25:64,3
+26,58:67
+84:125,3
+85,7:128
+*E
