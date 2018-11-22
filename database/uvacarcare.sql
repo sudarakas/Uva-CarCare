@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2018 at 02:48 PM
+-- Generation Time: Nov 22, 2018 at 02:43 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `uva_car_care`
+-- Database: `uvacarcare`
 --
 
 -- --------------------------------------------------------
