@@ -4,7 +4,12 @@
     Author     : NanoX
 --%>
 
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.Statement"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -60,7 +65,7 @@
                                                 </div>
                                                 <div class="form-group">
 							<label>Phone No</label>
-							<input type="email" class="form-control" name="cpno" required>
+                                                        <input type="text" class="form-control" name="cpno" pattern="[0]{1}[0-9]{9}" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Phone is not valid, Please enter a valid phone number' : ''); if(this.checkValidity()) form.cus_cpass.pattern = this.value;" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Service</label>
@@ -88,7 +93,7 @@
                                                 </div>
                                                 <div class="form-group">
 							<label>Time</label>
-							<select name="time" id="field_5" class="form-control"  required>    
+							<select name="ctime" id="field_5" class="form-control"  required>    
                                                             <option value="Choose your time" selected="">Choose your time</option>  
                                                             <option value="7am to 9am">7am to 9am</option>  
                                                             <option value="9am to 11am">9am to 11am</option>    
@@ -100,7 +105,7 @@
                                                 </div>
                                                 <div class="form-group">
 							<label>Message</label>
-                                                        <textarea name="msg" class="form-control" rows="5"></textarea>
+                                                        <textarea name="cmsg" class="form-control" rows="5"></textarea>
                                                 </div>
 						<div class="text-center">
 							<button type="submit" name="register" class="btn btn-danger" style="width: 50%;">
@@ -123,5 +128,72 @@
 <!--Add JavaScript Files-->
 	<script src="resources/js/jquery.min.js"></script>	
 	<script src="resources/js/bootstrap.min.js"></script>
+        
+<!--JSP Code Goes Here-->
+
+<!--DB Connection -->
+<%
+    Connection conn = null;
+    try{
+        Class.forName("com.mysql.jdbc.Driver");
+        conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/uvacarcare", "root", "");
+    %>
+    <%
+    }catch(Exception e){
+    %> 
+        <script>alert("Connection Dead");</script>
+    <%
+    }
+    %>
+    
+<%  
+//Make Reservation
+    try{
+        String cName = request.getParameter("cname");
+        String cEmail = request.getParameter("cemail");
+        String cPNo = request.getParameter("cpno");
+        String service = request.getParameter("service");
+        String serviceCenter = request.getParameter("servicecenter");
+        String date = request.getParameter("cdate");
+        String time = request.getParameter("ctime");
+        String cmsg = request.getParameter("cmsg");
+    
+        String reserveSql = "INSERT INTO appoinment(InvoiceNo, Name, Email, PhoneNo, Service, ServiceCenter, Date, Time, Message,Status) VALUES (?,?,?,?,?,?,?,?,?,?)";
+        PreparedStatement pst = conn.prepareCall(reserveSql);
+        //Statement st = conn.prepareStatement(reserveSql);
+        
+        String invoiceNo = "";
+        String possible = "1234567890";
+        for (int i = 0; i < 10; i++) {
+            invoiceNo += possible.charAt((int)Math.floor(Math.random()*possible.length()));
+        }
+        
+        pst.setString(1, invoiceNo);
+        pst.setString(2, cName);
+        pst.setString(3, cEmail);
+        pst.setString(4, cPNo);
+        pst.setString(5, service);
+        pst.setString(6, serviceCenter);
+        pst.setString(7, date);
+        pst.setString(8, time);
+        pst.setString(9, cmsg);
+        pst.setString(10, "New");
+        
+        
+        int insertData = pst.executeUpdate();
+        if(insertData > 0){
+        %>
+            <script>alert("Appointment submitted successfully");</script>
+        <%
+        }else{
+        %>
+            <script>alert("Something Worng! Please check back later");</script>
+        <%
+        }
+        
+    }catch(Exception e){
+            out.print(e);
+    } 
+%>
 </body>
 </html>

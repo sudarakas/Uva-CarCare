@@ -4,6 +4,9 @@
     Author     : NanoX
 --%>
 
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -48,8 +51,8 @@
 					</div>
 					<form action="" method="post">
 						<div class="form-group">
-							<label>Appointment No</label>
-							<input type="text" class="form-control" name="cname" required>
+							<label>Invoice No</label>
+							<input type="text" class="form-control" name="invoiceno" required>
                                                 </div>
 						<div class="text-center">
 							<button type="submit" name="register" class="btn btn-danger" style="width: 50%;">
@@ -72,5 +75,29 @@
 <!--Add JavaScript Files-->
 	<script src="resources/js/jquery.min.js"></script>	
 	<script src="resources/js/bootstrap.min.js"></script>
+        
+        
+<!--JSP Code Goes Here-->
+
+<!--DB Connection -->
+<%
+    Connection conn = null;
+    try{
+        Class.forName("com.mysql.jdbc.Driver");
+        conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/uvacarcare", "root", "");
+    %>
+    <%
+    }catch(Exception e){
+    %> 
+        <script>alert("Connection Dead");</script>
+    <%
+    }
+    %>
+    
+<%
+    //Car Status
+    String invoiceNo = request.getParameter("invoiceno");
+    
+%>
 </body>
 </html>

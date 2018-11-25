@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2018 at 02:43 AM
+-- Generation Time: Nov 25, 2018 at 04:59 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -27,16 +27,26 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `appoinment` (
+  `appoinmentId` int(11) NOT NULL,
   `InvoiceNo` varchar(30) NOT NULL,
   `Name` varchar(30) NOT NULL,
   `Email` varchar(30) NOT NULL,
-  `PhoneNo` int(10) NOT NULL,
+  `PhoneNo` varchar(10) NOT NULL,
   `Service` varchar(30) NOT NULL,
   `ServiceCenter` varchar(30) NOT NULL,
   `Date` date NOT NULL,
-  `Time` date NOT NULL,
-  `Message` varchar(50) NOT NULL
+  `Time` varchar(100) NOT NULL,
+  `Message` varchar(50) NOT NULL,
+  `Status` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `appoinment`
+--
+
+INSERT INTO `appoinment` (`appoinmentId`, `InvoiceNo`, `Name`, `Email`, `PhoneNo`, `Service`, `ServiceCenter`, `Date`, `Time`, `Message`, `Status`) VALUES
+(1, '5279857700', 'Sudaraka', 'sudharakafb@gmail.com', '0713009095', 'Auto Car Wash with Vacuum', 'Badulla', '2018-11-26', '11am to 1pm', 'Tesla Model X5', 'New'),
+(2, '8739372511', 'Menaka', 'menaka@nanolabs.lk', '0713654974', 'Car Service', 'Bandarawela', '2018-11-28', '3pm to 5pm', 'Dodge SUV', 'New');
 
 -- --------------------------------------------------------
 
@@ -58,6 +68,7 @@ CREATE TABLE `billing` (
 --
 
 CREATE TABLE `job` (
+  `jobId` int(11) NOT NULL,
   `InvoiceNo` varchar(30) NOT NULL,
   `EmpName` varchar(30) NOT NULL,
   `Status` text NOT NULL
@@ -79,6 +90,36 @@ CREATE TABLE `users` (
   `Password` varchar(30) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `appoinment`
+--
+ALTER TABLE `appoinment`
+  ADD PRIMARY KEY (`appoinmentId`);
+
+--
+-- Indexes for table `job`
+--
+ALTER TABLE `job`
+  ADD PRIMARY KEY (`jobId`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `appoinment`
+--
+ALTER TABLE `appoinment`
+  MODIFY `appoinmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `job`
+--
+ALTER TABLE `job`
+  MODIFY `jobId` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
