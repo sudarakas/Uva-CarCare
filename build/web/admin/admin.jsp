@@ -48,13 +48,13 @@
                     <br><br><br>
                     <div class="col-md-12">
                         <div class="col-md-3">
-                            <input type="button" class="btn btn-primary" style="width: 100%;" onclick="location.href='reserve.html';" value="New Appointments" />
+                            <input type="button" class="btn btn-primary" style="width: 100%;" onclick="location.href='newappointment.jsp';" value="New Appointments" />
                         </div>
                         <div class="col-md-3">
                             <input type="button" class="btn btn-primary" style="width: 100%;" onclick="location.href='reserve.html';" value="Duty Assign" />
                         </div>
                         <div class="col-md-3">
-                            <input type="button" class="btn btn-primary" style="width: 100%;" onclick="location.href='reserve.html';" value="Finish Jobs" />
+                            <input type="button" class="btn btn-primary" style="width: 100%;" onclick="location.href='reserve.html';" value="Finished Jobs" />
                         </div>
                         <div class="col-md-3">
                             <input type="button" class="btn btn-primary" style="width: 100%;" onclick="location.href='reserve.html';" value="All Appointments" />
@@ -63,16 +63,16 @@
                     <br><br><br>
                     <div class="col-md-12">
                         <div class="col-md-3">
-                            <input type="button" class="btn btn-primary" style="width: 100%;" onclick="location.href='reserve.html';" value="Add Employee" />
+                            <input type="button" class="btn btn-success" style="width: 100%;" onclick="location.href='reserve.html';" value="Add Employee" />
                         </div>
                         <div class="col-md-3">
-                            <input type="button" class="btn btn-primary" style="width: 100%;" onclick="location.href='reserve.html';" value="View Employee" />
+                            <input type="button" class="btn btn-success" style="width: 100%;" onclick="location.href='reserve.html';" value="View Employee" />
                         </div>
                         <div class="col-md-3">
-                            <input type="button" class="btn btn-primary" style="width: 100%;" onclick="location.href='reserve.html';" value="Track Orders" />
+                            <input type="button" class="btn btn-success" style="width: 100%;" onclick="location.href='../tarckappointment.jsp';" value="Track Orders" />
                         </div>
                         <div class="col-md-3">
-                            <input type="button" class="btn btn-primary" style="width: 100%;" onclick="location.href='reserve.html';" value="Rejected Orders" />
+                            <input type="button" class="btn btn-success" style="width: 100%;" onclick="location.href='reserve.html';" value="Rejected Orders" />
                         </div>
                     </div>
 					

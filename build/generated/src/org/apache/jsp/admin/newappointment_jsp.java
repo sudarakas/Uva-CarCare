@@ -1,14 +1,15 @@
-package org.apache.jsp;
+package org.apache.jsp.admin;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
-import java.sql.DriverManager;
+import java.sql.Connection;
 import java.sql.Connection;
 
-public final class viewappointment_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class newappointment_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -52,10 +53,11 @@ public final class viewappointment_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
-      out.write("        <title>View Appointment - Uva CareCare</title>\n");
+      out.write("        <title>New Appointments - Uva CareCare</title>\n");
       out.write("        <meta charset=\"UTF-8\">\n");
       out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n");
       out.write("        \n");
@@ -69,27 +71,11 @@ public final class viewappointment_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("    <body>\n");
       out.write("<!--\tNavigation Bar Start-->\n");
       out.write("\t\n");
-      out.write("\t");
+      out.write("    ");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "include/navbar.jsp", out, false);
       out.write("\n");
       out.write("\n");
-      out.write("\t<div class=\"container\" id=\"slider\">\n");
-      out.write("\t\t<div class=\"col-md-12\">\n");
-      out.write("\t\t\t<div id=\"slideshow1\" class=\"carousel slide col-md-12\" data-ride=\"carousel\">\n");
-      out.write("\t\t\t\t<div class=\"carousel-inner\">\n");
-      out.write("                                    <div class='item active'>\n");
-      out.write("\t\t\t\t\t<img src='resources/img/1.jpg'>\n");
-      out.write("                                    </div>\n");
-      out.write("\t\t\t\t</div>\n");
-      out.write("\t\t\t</div>\n");
-      out.write("\t\t</div>\n");
-      out.write("\t</div>\n");
-      out.write("<!--Contents Start-->\n");
-      out.write("<div id=\"content\" class=\"container\">\n");
-      out.write("\t<div class=\"row\">\n");
-      out.write("            <!--JSP Code Goes Here-->\n");
-      out.write("\n");
-      out.write("            <!--DB Connection -->\n");
+      out.write("<!--DB Connection -->\n");
       out.write("            ");
 
                 Connection conn = null;
@@ -110,32 +96,12 @@ public final class viewappointment_jsp extends org.apache.jasper.runtime.HttpJsp
                 
       out.write("\n");
       out.write("\n");
-      out.write("            ");
-
-                //Car Status
-                String invoiceNo = request.getParameter("invoiceno");
-
-                String getInvoiceStatusSql = "SELECT * FROM appoinment WHERE InvoiceNo='"+invoiceNo+"'";
-                PreparedStatement pst = conn.prepareCall(getInvoiceStatusSql);
-                ResultSet rt = pst.executeQuery();
-
-                rt.next();
-
-                String cName = rt.getString(3);
-                String cEmail = rt.getString(4);
-                String cPNo = rt.getString(5);
-                String service = rt.getString(6);
-                String serviceCenter = rt.getString(7);
-                String date = rt.getString(8);
-                String time = rt.getString(9);
-                String cmsg = rt.getString(10);
-                String cstatus = rt.getString(11); 
-            
-      out.write("\n");
-      out.write("                <div class=\"col-lg-12\">\n");
-      out.write("                    <h3 class=\"text-success text-uppercase text-center\" style=\"font-weight: 600\">Current Status : ");
- out.print(cstatus); 
-      out.write("</h3>\n");
+      out.write("<!--Contents Start-->\n");
+      out.write("<div id=\"content\" class=\"container\">\n");
+      out.write("\t<div class=\"row\">\n");
+      out.write("\t\t<div class=\"box\">\n");
+      out.write("                    <div class=\"col-lg-12\">\n");
+      out.write("                    <h3 class=\"text-success text-uppercase text-center\" style=\"font-weight: 600\">New Appointments</h3>\n");
       out.write("                    <div class=\"panel panel-success\">\n");
       out.write("                        <div class=\"panel-heading\">\n");
       out.write("                            <div class=\"panel-title\">\n");
@@ -147,79 +113,94 @@ public final class viewappointment_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("                                <table class=\"table table-bordered table-striped\">\n");
       out.write("                                    <thead>\n");
       out.write("                                        <tr>\n");
-      out.write("                                            <th></th>\n");
-      out.write("                                            <th>Details</th>\n");
+      out.write("                                            <th>Id</th>\n");
+      out.write("                                            <th>InvoiceNo</th>\n");
+      out.write("                                            <th>Name</th>\n");
+      out.write("                                            <th>Email</th>\n");
+      out.write("                                            <th>PNo</th>\n");
+      out.write("                                            <th>Service</th>\n");
+      out.write("                                            <th>Center</th>\n");
+      out.write("                                            <th>Date</th>\n");
+      out.write("                                            <th>Time</th>\n");
+      out.write("                                            <th>Msg</th>\n");
+      out.write("                                            <th>Approve</th>\n");
+      out.write("                                            <th>Reject</th>\n");
       out.write("                                        </tr>\n");
       out.write("                                    </thead>\n");
       out.write("                                    <tbody>\n");
-      out.write("                                        <tr>\n");
-      out.write("                                            <th>Your Name</th>\n");
-      out.write("                                            <th>");
-out.print(cName);
-      out.write("</th>\n");
-      out.write("                                        </tr>\n");
-      out.write("                                        <tr>\n");
-      out.write("                                            <th>Your Email</th>\n");
-      out.write("                                            <th>");
-out.print(cEmail);
-      out.write("</th>\n");
-      out.write("                                        </tr>\n");
-      out.write("                                        <tr>\n");
-      out.write("                                            <th>Your Phone No</th>\n");
-      out.write("                                            <th>");
-out.print(cPNo);
-      out.write("</th>\n");
-      out.write("                                        </tr>\n");
-      out.write("                                        <tr>\n");
-      out.write("                                            <th>Requested Service</th>\n");
-      out.write("                                            <th>");
-out.print(service);
-      out.write("</th>\n");
-      out.write("                                        </tr>\n");
-      out.write("                                        <tr>\n");
-      out.write("                                            <th>Selected Service Center</th>\n");
-      out.write("                                            <th>");
-out.print(serviceCenter);
-      out.write("</th>\n");
-      out.write("                                        </tr>\n");
-      out.write("                                        <tr>\n");
-      out.write("                                            <th>Service Date</th>\n");
-      out.write("                                            <th>");
-out.print(date);
-      out.write("</th>\n");
-      out.write("                                        </tr>\n");
-      out.write("                                        <tr>\n");
-      out.write("                                            <th>Selected Time</th>\n");
-      out.write("                                            <th>");
-out.print(time);
-      out.write("</th>\n");
-      out.write("                                        </tr>\n");
-      out.write("                                        <tr>\n");
-      out.write("                                            <th>Message</th>\n");
-      out.write("                                            <th>");
-out.print(cmsg);
-      out.write("</th>\n");
-      out.write("                                        </tr>\n");
+      out.write("                                        ");
+
+                                            String getNewAppoSql = "SELECT * FROM appoinment WHERE Status='New'";
+                                            PreparedStatement pst = conn.prepareCall(getNewAppoSql);
+                                            ResultSet rt = pst.executeQuery();
+                                            
+                                            while(rt.next()){
+                                           
+      out.write("\n");
+      out.write("                                           <tr>\n");
+      out.write("                                               <td>");
+out.print(rt.getString(1));
+      out.write("</td>\n");
+      out.write("                                               <td>");
+out.print(rt.getString(2));
+      out.write("</td>\n");
+      out.write("                                               <td>");
+out.print(rt.getString(3));
+      out.write("</td>\n");
+      out.write("                                               <td>");
+out.print(rt.getString(4));
+      out.write("</td>\n");
+      out.write("                                               <td>");
+out.print(rt.getString(5));
+      out.write("</td>\n");
+      out.write("                                               <td>");
+out.print(rt.getString(6));
+      out.write("</td>\n");
+      out.write("                                               <td>");
+out.print(rt.getString(7));
+      out.write("</td>\n");
+      out.write("                                               <td>");
+out.print(rt.getString(8));
+      out.write("</td>\n");
+      out.write("                                               <td>");
+out.print(rt.getString(9));
+      out.write("</td>\n");
+      out.write("                                               <td>");
+out.print(rt.getString(10));
+      out.write("</td>\n");
+      out.write("                                               <td><a href='approve.jsp?appId=");
+out.print(rt.getString(1));
+      out.write("' class='btn btn-success btn-sm'>Approve</a></td>\n");
+      out.write("                                               <td><a href='reject.jsp?appId=");
+out.print(rt.getString(1));
+      out.write("' class='btn btn-danger btn-sm'>Reject</a></td>\n");
+      out.write("                                           </tr>\n");
+      out.write("                                           ");
+
+                                            }
+                                        
+      out.write("\n");
       out.write("                                    </tbody>\n");
       out.write("                                </table>\n");
       out.write("                            </div>\n");
       out.write("                        </div>\n");
       out.write("                    </div>\n");
       out.write("                </div>\n");
-      out.write("        </div>\n");
-      out.write("    </div>\t\n");
-      out.write("\n");
+      out.write("\t\t</div>\n");
+      out.write("            </div>\n");
+      out.write("\t</div>\n");
+      out.write("    <br>\n");
+      out.write("    <br>\n");
+      out.write("    <br>\n");
       out.write("<!--Footer Start-->\n");
       out.write("    ");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "include/footer.jsp", out, false);
       out.write("\n");
-      out.write("    \n");
       out.write("<!--Add JavaScript Files-->\n");
       out.write("\t<script src=\"resources/js/jquery.min.js\"></script>\t\n");
       out.write("\t<script src=\"resources/js/bootstrap.min.js\"></script>\n");
       out.write("</body>\n");
-      out.write("</html>\n");
-      out.write("\n");
+      out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

@@ -24,6 +24,9 @@
 			<div class="navbar-collapse navbar-default collapse" id="navigation">
 				<div class="padding-nav">
 					 <ul class="nav navbar-nav navbar-right">
+                                                <li>
+                                                    <a href="admin.jsp">Admin</a>
+					 	</li>
 					 	<li>
                                                     <a href="../index.jsp">Home</a>
 					 	</li>

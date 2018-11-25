@@ -67,7 +67,7 @@
 						
 						<div class="text-center">
 							<button type="submit" name="register" class="btn btn-danger" style="width: 50%;">
-								<i class="fa fa-envelope"></i> Submit
+								<i class="fa fa-paper-plane"></i> Submit
                                                         </button>
 						</div>
                                             <br>
