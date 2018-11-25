@@ -4,6 +4,8 @@
     Author     : NanoX
 --%>
 
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.Connection"%>
@@ -11,7 +13,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Reserve Online - Uva CareCare</title>
+        <title>Track Appointment - Uva CareCare</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
@@ -49,7 +51,7 @@
                             <p class="text-muted">Check Your Appointment Status Online </p>
 			</center>
 					</div>
-					<form action="" method="post">
+					<form action="viewappointment.jsp" method="post">
 						<div class="form-group">
 							<label>Invoice No</label>
 							<input type="text" class="form-control" name="invoiceno" required>
@@ -75,29 +77,5 @@
 <!--Add JavaScript Files-->
 	<script src="resources/js/jquery.min.js"></script>	
 	<script src="resources/js/bootstrap.min.js"></script>
-        
-        
-<!--JSP Code Goes Here-->
-
-<!--DB Connection -->
-<%
-    Connection conn = null;
-    try{
-        Class.forName("com.mysql.jdbc.Driver");
-        conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/uvacarcare", "root", "");
-    %>
-    <%
-    }catch(Exception e){
-    %> 
-        <script>alert("Connection Dead");</script>
-    <%
-    }
-    %>
-    
-<%
-    //Car Status
-    String invoiceNo = request.getParameter("invoiceno");
-    
-%>
 </body>
 </html>

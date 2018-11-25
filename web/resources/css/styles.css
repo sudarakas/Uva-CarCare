@@ -108,6 +108,9 @@ body{
 	background-color: #FFC107 !important;
 	border-color: #FFC107 !important;
 }
+.text-success{
+    color: #28A745 !important;
+}
 
 #search .navbar-form{
 	float: right;

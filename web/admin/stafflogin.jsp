@@ -33,27 +33,27 @@
                             <h2 style="text-transform: uppercase">Staff login</h2>
                             <p class="text-muted">Uva CarCare Emplyee Login Panel</p>
 			</center>
-					</div>
-					<form action="" method="post" enctype="multipart/form-data">
-						<div class="form-group">
-							<label>Email</label>
-							<input type="email" class="form-control" name="email" required>
-                                                </div>
-                                                <div class="form-group">
-							<label>Password</label>
-							<input type="password" class="form-control" name="pass" required>
-                                                </div>
-						<div class="text-center">
-							<button type="submit" name="register" class="btn btn-danger" style="width: 50%;">
-								<i class="fa fa-car"></i> Reserve Now
-                                                        </button>
-						</div>
+		</div>
+                    <form action="" method="post" enctype="multipart/form-data">
+			<div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" name="pass" required>
+                        </div>
+                            <div class="text-center">
+				<button type="submit" name="register" class="btn btn-danger" style="width: 50%;">
+                                    <i class="fa fa-car"></i> Reserve Now
+                                </button>
+                            </div>
                                             
-                                            <br>
-                                            <br>
-					</form>
-				</div>
-			</div>
+                            <br>
+                            <br>
+                    </form>
+                </div>
+            </div>
 	</div>
 </div>
 	

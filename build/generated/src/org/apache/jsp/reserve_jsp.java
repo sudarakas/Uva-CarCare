@@ -7,10 +7,20 @@ import java.sql.PreparedStatement;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.Statement;
+import javax.mail.*;
+import javax.mail.internet.*;
+import java.util.Properties;
 
 public final class reserve_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
+
+            public static class SMTPAuthenticator extends Authenticator{
+                public PasswordAuthentication getPasswordAuthentication(){
+                    return new PasswordAuthentication("uvacarcare", "uvacarcare@uwu");
+                }
+            }
+        
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
 
   private static java.util.List<String> _jspx_dependants;
@@ -45,6 +55,9 @@ public final class reserve_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -110,7 +123,7 @@ public final class reserve_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                                </div>\n");
       out.write("                                                <div class=\"form-group\">\n");
       out.write("\t\t\t\t\t\t\t<label>Phone No</label>\n");
-      out.write("\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" name=\"cpno\" onchange=\"this.setCustomValidity(this.validity.patternMismatch ? 'Phone is not valid, Please enter a valid phone number' : ''); if(this.checkValidity()) form.cus_cpass.pattern = this.value;\" required>\n");
+      out.write("                                                        <input type=\"text\" class=\"form-control\" name=\"cpno\" pattern=\"[0]{1}[0-9]{9}\" onchange=\"this.setCustomValidity(this.validity.patternMismatch ? 'Phone is not valid, Please enter a valid phone number' : ''); if(this.checkValidity()) form.cus_cpass.pattern = this.value;\" required>\n");
       out.write("                                                </div>\n");
       out.write("                                                <div class=\"form-group\">\n");
       out.write("                                                    <label>Service</label>\n");
@@ -134,7 +147,7 @@ public final class reserve_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                                </div>\n");
       out.write("                                                <div class=\"form-group\">\n");
       out.write("\t\t\t\t\t\t\t<label>Date</label>\n");
-      out.write("\t\t\t\t\t\t\t<input type=\"date\" class=\"form-control\" name=\"cdate\" required>\n");
+      out.write("\t\t\t\t\t\t\t<input type=\"date\" class=\"form-control\" name=\"cdate\" id=\"sdate\" required>\n");
       out.write("                                                </div>\n");
       out.write("                                                <div class=\"form-group\">\n");
       out.write("\t\t\t\t\t\t\t<label>Time</label>\n");
@@ -149,7 +162,7 @@ public final class reserve_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\t\t\t</select>\n");
       out.write("                                                </div>\n");
       out.write("                                                <div class=\"form-group\">\n");
-      out.write("\t\t\t\t\t\t\t<label>Message</label>\n");
+      out.write("\t\t\t\t\t\t\t<label>Message(Car Model)</label>\n");
       out.write("                                                        <textarea name=\"cmsg\" class=\"form-control\" rows=\"5\"></textarea>\n");
       out.write("                                                </div>\n");
       out.write("\t\t\t\t\t\t<div class=\"text-center\">\n");
@@ -171,10 +184,25 @@ public final class reserve_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "include/footer.jsp", out, false);
       out.write("\n");
-      out.write("        \n");
+      out.write("<!--limit date selection code-->\n");
+      out.write("    <script>\n");
+      out.write("        var minDate = new Date();\n");
+      out.write("        $(document).ready(function(){\n");
+      out.write("            $(\"#sdate\").datepicker({\n");
+      out.write("                showAnim: 'drop',\n");
+      out.write("                dateFormat: 'yy-mm-dd',\n");
+      out.write("                minDate: minDate,\n");
+      out.write("                onclose:function(selectedDate){\n");
+      out.write("                    $('#sdate').datepicker(\"option\", \"minDate\", selectedDate );\n");
+      out.write("                }\n");
+      out.write("            });\n");
+      out.write("        });\n");
+      out.write("    </script>\n");
+      out.write("\n");
       out.write("<!--Add JavaScript Files-->\n");
       out.write("\t<script src=\"resources/js/jquery.min.js\"></script>\t\n");
       out.write("\t<script src=\"resources/js/bootstrap.min.js\"></script>\n");
+      out.write("        \n");
       out.write("<!--JSP Code Goes Here-->\n");
       out.write("\n");
       out.write("<!--DB Connection -->\n");
@@ -209,12 +237,12 @@ public final class reserve_jsp extends org.apache.jasper.runtime.HttpJspBase
         String time = request.getParameter("ctime");
         String cmsg = request.getParameter("cmsg");
     
-        String reserveSql = "INSERT INTO appoinment(InvoiceNo, Name, Email, PhoneNo, Service, ServiceCenter, Date, Time, Message) VALUES (?,?,?,?,?,?,?,?,?)";
+        String reserveSql = "INSERT INTO appoinment(InvoiceNo, Name, Email, PhoneNo, Service, ServiceCenter, Date, Time, Message,Status) VALUES (?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement pst = conn.prepareCall(reserveSql);
         //Statement st = conn.prepareStatement(reserveSql);
         
         String invoiceNo = "";
-        String possible = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890";
+        String possible = "1234567890";
         for (int i = 0; i < 10; i++) {
             invoiceNo += possible.charAt((int)Math.floor(Math.random()*possible.length()));
         }
@@ -228,10 +256,59 @@ public final class reserve_jsp extends org.apache.jasper.runtime.HttpJspBase
         pst.setString(7, date);
         pst.setString(8, time);
         pst.setString(9, cmsg);
+        pst.setString(10, "New");
         
         
         int insertData = pst.executeUpdate();
         if(insertData > 0){
+        
+      out.write("\n");
+      out.write("        ");
+      out.write("\n");
+      out.write("        ");
+
+            int mailsent = 0;
+            String d_uname = "uvacarcare";
+            String d_password = "uvacarcare@uwu";
+            String d_host = "smtp.gmail.com";
+            int d_port = 465;
+            
+            String m_to = new String();
+            String m_from = "uvacarcare@gmail.com";
+            String m_subject = new String();
+            String m_text = new String();
+            
+            m_to = cEmail;
+            m_subject = "Your Appointment Received Successfully";
+            m_text = "<h3>Hi! ";
+            m_text = m_text.concat(cName);
+            m_text = m_text.concat("</h3>");
+            m_text = m_text.concat("<br><p>Your appointment has been received successfully. Please be kind enough to handover the vehicle before the time you selected.</p>");
+            m_text = m_text.concat("<br><h3>You can track your appointment on our site, Using Invoice No:</h3>");
+            m_text = m_text.concat("<br><br><b>Invoice No: <i>");
+            m_text = m_text.concat(invoiceNo);
+            m_text = m_text.concat("</i></b>");
+            m_text = m_text.concat("<br><br><br><p>Thank You</p><br>");
+            m_text = m_text.concat("<b>Team - Uva CareCare</b>");
+            
+            Properties props = new Properties();
+            SMTPAuthenticator auth = new SMTPAuthenticator();
+            Session sess = Session.getInstance(props, auth);
+            MimeMessage msg = new MimeMessage(sess);
+            
+            msg.setContent(m_text, "text/html");
+            msg.setSubject(m_subject);
+            msg.setFrom(new InternetAddress(m_from));
+            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(m_to));
+            
+            try{
+                Transport trans = sess.getTransport("smtps");
+                trans.connect(d_host,d_port,d_uname,d_password);
+                trans.sendMessage(msg, msg.getAllRecipients());
+                trans.close();
+            }catch(Exception e){
+                out.print(e);
+            }
         
       out.write("\n");
       out.write("            <script>alert(\"Appointment submitted successfully\");</script>\n");
@@ -247,8 +324,9 @@ public final class reserve_jsp extends org.apache.jasper.runtime.HttpJspBase
         
     }catch(Exception e){
             out.print(e);
-    } 
+    }
 
+      out.write("\n");
       out.write("\n");
       out.write("</body>\n");
       out.write("</html>");

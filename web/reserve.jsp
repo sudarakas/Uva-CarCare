@@ -8,6 +8,9 @@
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.Statement"%>
+<%@page import="javax.mail.*"%>
+<%@page import="javax.mail.internet.*"%>
+<%@page import="java.util.Properties"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -104,7 +107,7 @@
 							</select>
                                                 </div>
                                                 <div class="form-group">
-							<label>Message</label>
+							<label>Message(Car Model)</label>
                                                         <textarea name="cmsg" class="form-control" rows="5"></textarea>
                                                 </div>
 						<div class="text-center">
@@ -124,7 +127,7 @@
 
 <!--Footer Start-->
 	<jsp:include page="include/footer.jsp"/>
-        
+
 <!--Add JavaScript Files-->
 	<script src="resources/js/jquery.min.js"></script>	
 	<script src="resources/js/bootstrap.min.js"></script>
@@ -148,52 +151,111 @@
     
 <%  
 //Make Reservation
-    try{
-        String cName = request.getParameter("cname");
-        String cEmail = request.getParameter("cemail");
-        String cPNo = request.getParameter("cpno");
-        String service = request.getParameter("service");
-        String serviceCenter = request.getParameter("servicecenter");
-        String date = request.getParameter("cdate");
-        String time = request.getParameter("ctime");
-        String cmsg = request.getParameter("cmsg");
-    
-        String reserveSql = "INSERT INTO appoinment(InvoiceNo, Name, Email, PhoneNo, Service, ServiceCenter, Date, Time, Message,Status) VALUES (?,?,?,?,?,?,?,?,?,?)";
-        PreparedStatement pst = conn.prepareCall(reserveSql);
-        //Statement st = conn.prepareStatement(reserveSql);
-        
-        String invoiceNo = "";
-        String possible = "1234567890";
-        for (int i = 0; i < 10; i++) {
-            invoiceNo += possible.charAt((int)Math.floor(Math.random()*possible.length()));
-        }
-        
-        pst.setString(1, invoiceNo);
-        pst.setString(2, cName);
-        pst.setString(3, cEmail);
-        pst.setString(4, cPNo);
-        pst.setString(5, service);
-        pst.setString(6, serviceCenter);
-        pst.setString(7, date);
-        pst.setString(8, time);
-        pst.setString(9, cmsg);
-        pst.setString(10, "New");
-        
-        
-        int insertData = pst.executeUpdate();
-        if(insertData > 0){
-        %>
-            <script>alert("Appointment submitted successfully");</script>
-        <%
-        }else{
-        %>
-            <script>alert("Something Worng! Please check back later");</script>
-        <%
-        }
-        
-    }catch(Exception e){
-            out.print(e);
-    } 
+    if(request.getParameter("register") != null){
+        try{
+            String cName = request.getParameter("cname");
+            String cEmail = request.getParameter("cemail");
+            String cPNo = request.getParameter("cpno");
+            String service = request.getParameter("service");
+            String serviceCenter = request.getParameter("servicecenter");
+            String date = request.getParameter("cdate");
+            String time = request.getParameter("ctime");
+            String cmsg = request.getParameter("cmsg");
+
+            String reserveSql = "INSERT INTO appoinment(InvoiceNo, Name, Email, PhoneNo, Service, ServiceCenter, Date, Time, Message,Status) VALUES (?,?,?,?,?,?,?,?,?,?)";
+            PreparedStatement pst = conn.prepareCall(reserveSql);
+            //Statement st = conn.prepareStatement(reserveSql);
+
+            String invoiceNo = "";
+            String possible = "1234567890QWERTYUIOPASDFGHJKLZXCVBNM";
+            for (int i = 0; i < 10; i++) {
+                invoiceNo += possible.charAt((int)Math.floor(Math.random()*possible.length()));
+            }
+
+            pst.setString(1, invoiceNo);
+            pst.setString(2, cName);
+            pst.setString(3, cEmail);
+            pst.setString(4, cPNo);
+            pst.setString(5, service);
+            pst.setString(6, serviceCenter);
+            pst.setString(7, date);
+            pst.setString(8, time);
+            pst.setString(9, cmsg);
+            pst.setString(10, "New");
+
+            int insertData = 0;
+            if(invoiceNo != null){
+                insertData = pst.executeUpdate();
+            }
+
+            if(insertData > 0){
+            %>
+
+    <!--        Mailing Function using javax.mailer-->
+            <%!
+                public static class SMTPAuthenticator extends Authenticator{
+                    public PasswordAuthentication getPasswordAuthentication(){
+                        return new PasswordAuthentication("uvacarcare", "uvacarcare@uwu");
+                    }
+                }
+            %>
+            <%
+                int mailsent = 0;
+                String d_uname = "uvacarcare";
+                String d_password = "uvacarcare@uwu";
+                String d_host = "smtp.gmail.com";
+                int d_port = 465;
+
+                String m_to = new String();
+                String m_from = "uvacarcare@gmail.com";
+                String m_subject = new String();
+                String m_text = new String();
+
+                m_to = cEmail;
+                m_subject = "Your Appointment Received Successfully";
+                m_text = "<h3>Hi! ";
+                m_text = m_text.concat(cName);
+                m_text = m_text.concat("</h3>");
+                m_text = m_text.concat("<br><p>Your appointment has been received successfully. Please be kind enough to handover the vehicle before the time you selected.</p>");
+                m_text = m_text.concat("<br><h3>You can track your appointment on our site, Using Invoice No:</h3>");
+                m_text = m_text.concat("<br><br><b>Invoice No: <i>");
+                m_text = m_text.concat(invoiceNo);
+                m_text = m_text.concat("</i></b>");
+                m_text = m_text.concat("<br><br><br><p>Thank You</p><br>");
+                m_text = m_text.concat("<b>Team - Uva CareCare</b>");
+
+                Properties props = new Properties();
+                SMTPAuthenticator auth = new SMTPAuthenticator();
+                Session sess = Session.getInstance(props, auth);
+                MimeMessage msg = new MimeMessage(sess);
+
+                msg.setContent(m_text, "text/html");
+                msg.setSubject(m_subject);
+                msg.setFrom(new InternetAddress(m_from));
+                msg.addRecipient(Message.RecipientType.TO, new InternetAddress(m_to));
+
+                try{
+                    Transport trans = sess.getTransport("smtps");
+                    trans.connect(d_host,d_port,d_uname,d_password);
+                    trans.sendMessage(msg, msg.getAllRecipients());
+                    trans.close();
+                }catch(Exception e){
+                    out.print(e);
+                }
+            %>
+                <script>alert("Appointment submitted successfully");</script>
+            <%
+            }else{
+            %>
+                <script>alert("Something Worng! Please check back later");</script>
+            <%
+            }
+
+        }catch(Exception e){
+                out.print(e);
+        } 
+    }
 %>
+
 </body>
 </html>

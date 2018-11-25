@@ -1,19 +1,14 @@
 <%-- 
-    Document   : tarckappointment
-    Created on : Nov 18, 2018, 11:17:48 AM
+    Document   : index
+    Created on : Nov 25, 2018, 6:57:55 PM
     Author     : NanoX
 --%>
 
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Connection"%>
-<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Track Appointment - Uva CareCare</title>
+        <title>Admin Area - Uva CareCare</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
@@ -28,8 +23,7 @@
 <!--	Navigation Bar Start-->
 	
 	<jsp:include page="include/navbar.jsp"/>
-
-	<div class="container" id="slider">
+<div class="container" id="slider">
 		<div class="col-md-12">
 			<div id="slideshow1" class="carousel slide col-md-12" data-ride="carousel">
 				<div class="carousel-inner">
@@ -47,33 +41,24 @@
 		<div class="box">
                     <div class="box-header">
 			<center>
-                            <h2 style="text-transform: uppercase">Check Appointment</h2>
-                            <p class="text-muted">Check Your Appointment Status Online </p>
+                            <h2 style="text-transform: uppercase">Welcome to Uva CareCare Admin Zone </h2>
+                            <p class="text-muted">Please Login to Continue</p>
 			</center>
-					</div>
-					<form action="viewappointment.jsp" method="post">
-						<div class="form-group">
-							<label>Invoice No</label>
-							<input type="text" class="form-control" name="invoiceno" required>
-                                                </div>
-						<div class="text-center">
-							<button type="submit" name="register" class="btn btn-danger" style="width: 50%;">
-								<i class="fa fa-arrows"></i> Check Appointment
-                                                        </button>
-						</div>
-                                            
-                                            <br>
-                                            <br>
-					</form>
-				</div>
-			</div>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <input type="button" class="btn btn-primary" style="width: 50%;" onclick="location.href='stafflogin.jsp';" value="Login Now" />
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+		</div>
+            </div>
 	</div>
 </div>
 	
 
 <!--Footer Start-->
-    <jsp:include page="include/footer.jsp"/>
-    
+	<jsp:include page="include/footer.jsp"/>
 <!--Add JavaScript Files-->
 	<script src="resources/js/jquery.min.js"></script>	
 	<script src="resources/js/bootstrap.min.js"></script>

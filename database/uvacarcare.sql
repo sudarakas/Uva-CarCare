@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2018 at 04:59 AM
+-- Generation Time: Nov 25, 2018 at 01:37 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -46,7 +46,15 @@ CREATE TABLE `appoinment` (
 
 INSERT INTO `appoinment` (`appoinmentId`, `InvoiceNo`, `Name`, `Email`, `PhoneNo`, `Service`, `ServiceCenter`, `Date`, `Time`, `Message`, `Status`) VALUES
 (1, '5279857700', 'Sudaraka', 'sudharakafb@gmail.com', '0713009095', 'Auto Car Wash with Vacuum', 'Badulla', '2018-11-26', '11am to 1pm', 'Tesla Model X5', 'New'),
-(2, '8739372511', 'Menaka', 'menaka@nanolabs.lk', '0713654974', 'Car Service', 'Bandarawela', '2018-11-28', '3pm to 5pm', 'Dodge SUV', 'New');
+(2, '8739372511', 'Menaka', 'menaka@nanolabs.lk', '0713654974', 'Car Service', 'Bandarawela', '2018-11-28', '3pm to 5pm', 'Dodge SUV', 'New'),
+(3, '5238673156', 'Gayan', 'gayanrajitha1994@gmail.com', '0712354687', 'Auto Car Wash Only', 'Passara', '2018-11-30', '11am to 1pm', 'Toyota Axis', 'New'),
+(4, '3999155073', 'Gayan', 'gayanrajitha1994@gmail.com', '0712354687', 'Car Wash with Vacuum', 'Hali Ela', '2018-12-12', '5pm to 7pm', 'Toyota SUV', 'New'),
+(5, '8147311320', 'Sudaraka', 'sudharakafb@gmail.com', '0713009095', 'Auto Car Wash Only', 'Badulla', '2018-11-28', '11am to 1pm', 'Benz E3', 'New'),
+(6, '1565719114', 'Gayan', 'gayanrajitha1994@gmail.com', '0715645124', 'Car Vacuum Only', 'Bandarawela', '2018-11-30', '11am to 1pm', 'Mazda Rx8', 'New'),
+(7, '2609696311', 'Yasiru', 'sudharakafb@gmail.com', '0712392017', 'Auto Car Wash Only', 'Badulla', '2018-11-30', '9am to 11am', 'Tesla X5', 'New'),
+(8, '0466266943', 'Sapuni', 'sudharakafb@gmail.com', '0715696317', 'Auto Car Wash with Vacuum', 'Bandarawela', '2018-12-11', '1pm to 3pm', 'BMW i8', 'New'),
+(9, '6522329938', 'Sapuni', 'sudharakafb@gmail.com', '0715647893', 'Car Vacuum Only', 'Badulla', '2018-12-10', '7am to 9am', 'Lancer 2018', 'New'),
+(10, '4188512558', 'Namal Rajapaksha', 'namal@gmail.com', '0775689412', 'Car Wash with Vacuum', 'Hali Ela', '2018-11-30', '7am to 9am', 'Lamborghini', 'New');
 
 -- --------------------------------------------------------
 
@@ -114,7 +122,7 @@ ALTER TABLE `job`
 -- AUTO_INCREMENT for table `appoinment`
 --
 ALTER TABLE `appoinment`
-  MODIFY `appoinmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `appoinmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `job`
 --
