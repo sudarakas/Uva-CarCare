@@ -46,6 +46,13 @@ public final class admin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
+      out.write("    ");
+
+        if(session.getAttribute("email") == null){
+            response.sendRedirect("stafflogin.jsp");
+        }
+    
+      out.write("\n");
       out.write("    <head>\n");
       out.write("        <title>Admin - Uva CareCare</title>\n");
       out.write("        <meta charset=\"UTF-8\">\n");
@@ -95,7 +102,7 @@ public final class admin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <input type=\"button\" class=\"btn btn-primary\" style=\"width: 100%;\" onclick=\"location.href='reserve.html';\" value=\"Duty Assign\" />\n");
       out.write("                        </div>\n");
       out.write("                        <div class=\"col-md-3\">\n");
-      out.write("                            <input type=\"button\" class=\"btn btn-primary\" style=\"width: 100%;\" onclick=\"location.href='reserve.html';\" value=\"Finish Jobs\" />\n");
+      out.write("                            <input type=\"button\" class=\"btn btn-primary\" style=\"width: 100%;\" onclick=\"location.href='reserve.html';\" value=\"Finished Jobs\" />\n");
       out.write("                        </div>\n");
       out.write("                        <div class=\"col-md-3\">\n");
       out.write("                            <input type=\"button\" class=\"btn btn-primary\" style=\"width: 100%;\" onclick=\"location.href='reserve.html';\" value=\"All Appointments\" />\n");
