@@ -7,11 +7,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <%
-        if(session.getAttribute("email") == null){
-            response.sendRedirect("stafflogin.jsp");
-        }
-    %>
     <head>
         <title>Admin - Uva CareCare</title>
         <meta charset="UTF-8">
@@ -56,7 +51,7 @@
                             <input type="button" class="btn btn-primary" style="width: 100%;" onclick="location.href='newappointment.jsp';" value="New Appointments" />
                         </div>
                         <div class="col-md-3">
-                            <input type="button" class="btn btn-primary" style="width: 100%;" onclick="location.href='reserve.html';" value="Duty Assign" />
+                            <input type="button" class="btn btn-primary" style="width: 100%;" onclick="location.href='approvedappointment.jsp';" value="Duty Assign" />
                         </div>
                         <div class="col-md-3">
                             <input type="button" class="btn btn-primary" style="width: 100%;" onclick="location.href='reserve.html';" value="Finished Jobs" />

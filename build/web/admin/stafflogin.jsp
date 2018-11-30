@@ -4,10 +4,6 @@
     Author     : NanoX
 --%>
 
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -38,7 +34,7 @@
                             <p class="text-muted">Uva CarCare Emplyee Login Panel</p>
 			</center>
 		</div>
-                    <form action="" method="post">
+                    <form action="" method="post" enctype="multipart/form-data">
 			<div class="form-group">
                             <label>Email</label>
                             <input type="email" class="form-control" name="email" required>
@@ -48,8 +44,8 @@
                             <input type="password" class="form-control" name="pass" required>
                         </div>
                             <div class="text-center">
-				<button type="submit" name="login" class="btn btn-danger" style="width: 50%;">
-                                    <i class="fa fa-car"></i> Login Now
+				<button type="submit" name="register" class="btn btn-danger" style="width: 50%;">
+                                    <i class="fa fa-car"></i> Reserve Now
                                 </button>
                             </div>
                                             
@@ -67,45 +63,6 @@
 <!--Add JavaScript Files-->
 	<script src="resources/js/jquery.min.js"></script>	
 	<script src="resources/js/bootstrap.min.js"></script>
-        
-        <%
-                if(request.getParameter("login") != null){
-                    String uname = request.getParameter("email");
-                    String pass = request.getParameter("pass");
-                    Connection con = null;
-    
-                try{
-                    Class.forName("com.mysql.jdbc.Driver");
-                    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/uvacarcare","root","");
-                    String query = "SELECT * FROM users WHERE Email='"+uname+"' AND Password='"+pass+"'";
-                    ResultSet rs;
-                    Statement ps;
-                    ps = con.createStatement();
-                    rs = ps.executeQuery(query);
-                    if(rs.next()){
-                        String userTtpe = rs.getString("userType");
-                        if(userTtpe.equals("Admin")){
-                            session.setAttribute("email",uname);
-                            response.sendRedirect("admin.jsp");
-                        }else if(userTtpe.equals("Emp")){
-                            session.setAttribute("email",uname);
-                            response.sendRedirect("admin.jsp");
-                        }
-                        else{%>
-                            <script>alert("No User Found");</script>
-                        <%
-                        }
-                    }else{
-                       %>
-                            <script>alert("No User Found");</script>
-                        <%
-                    }
-                }catch(Exception ex){
-                    out.println(ex);    
-                    
-                }
-                }
-            %>
 </body>
 </html>
 

@@ -42,15 +42,9 @@
                                                 <li>
                                                     <a href="../tarckappointment.jsp">Track Car</a>
 					 	</li>
-                                                <%
-                                                    if(session.getAttribute("email") != null){
-                                                %>
-                                                    <li>
-                                                        <a href="logout.jsp">Logout</a>
-                                                    </li>
-                                                <%
-                                                    }
-                                                %>
+					 	<li class="blackMe">
+                                                    <a href="../reserve.jsp">Reserve Online</a>
+					 	</li>
 					</ul>
 				</div>
 			</div>
