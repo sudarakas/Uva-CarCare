@@ -20,7 +20,6 @@
             response.sendRedirect("finishjob.jsp");
         }
     %>
-    
     <head>
         <title>New Appointments - Uva CareCare</title>
         <meta charset="UTF-8">
@@ -58,7 +57,7 @@
 	<div class="row">
 		<div class="box">
                     <div class="col-lg-12">
-                    <h3 class="text-success text-uppercase text-center" style="font-weight: 600">New Appointments</h3>
+                    <h3 class="text-success text-uppercase text-center" style="font-weight: 600">All Appointments</h3>
                     <div class="panel panel-success">
                         <div class="panel-heading">
                             <div class="panel-title">
@@ -80,13 +79,13 @@
                                             <th>Date</th>
                                             <th>Time</th>
                                             <th>Msg</th>
-                                            <th>Approve</th>
-                                            <th>Reject</th>
+                                            <th>Status</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <%
-                                            String getNewAppoSql = "SELECT * FROM appoinment WHERE Status='New'";
+                                            String getNewAppoSql = "SELECT * FROM appoinment";
                                             PreparedStatement pst = conn.prepareCall(getNewAppoSql);
                                             ResultSet rt = pst.executeQuery();
                                             
@@ -103,8 +102,8 @@
                                                <td><%out.print(rt.getString(8));%></td>
                                                <td><%out.print(rt.getString(9));%></td>
                                                <td><%out.print(rt.getString(10));%></td>
-                                               <td><a href='approve.jsp?appId=<%out.print(rt.getString(1));%>' class='btn btn-success btn-sm'>Approve</a></td>
-                                               <td><a href='reject.jsp?appId=<%out.print(rt.getString(1));%>' class='btn btn-danger btn-sm'>Reject</a></td>
+                                               <td><%out.print(rt.getString(11));%></td>
+                                               
                                            </tr>
                                            <%
                                             }

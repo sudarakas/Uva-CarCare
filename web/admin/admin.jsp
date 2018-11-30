@@ -7,6 +7,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <%
+        if(session.getAttribute("email") == null){
+            response.sendRedirect("stafflogin.jsp");
+        }
+        if(!session.getAttribute("utype").equals("Admin")){
+            response.sendRedirect("finishjob.jsp");
+        }
+    %>
     <head>
         <title>Admin - Uva CareCare</title>
         <meta charset="UTF-8">
@@ -57,7 +65,7 @@
                             <input type="button" class="btn btn-primary" style="width: 100%;" onclick="location.href='reserve.html';" value="Finished Jobs" />
                         </div>
                         <div class="col-md-3">
-                            <input type="button" class="btn btn-primary" style="width: 100%;" onclick="location.href='reserve.html';" value="All Appointments" />
+                            <input type="button" class="btn btn-primary" style="width: 100%;" onclick="location.href='allappointments.jsp';" value="All Appointments" />
                         </div>
                     </div>
                     <br><br><br>

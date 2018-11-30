@@ -15,6 +15,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+     <%
+        if(session.getAttribute("email") == null){
+            response.sendRedirect("stafflogin.jsp");
+        }
+       if(!session.getAttribute("utype").equals("Admin")){
+            response.sendRedirect("finishjob.jsp");
+        }
+    %>
     <head>
         <title>Duty Assign - Uva CareCare</title>
         <meta charset="UTF-8">

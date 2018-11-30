@@ -45,104 +45,118 @@ public final class stafflogin_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("<!DOCTYPE html>\n");
-      out.write("<html>\n");
-      out.write("    <head>\n");
-      out.write("        <title>Staff Login - Uva CareCare</title>\n");
-      out.write("        <meta charset=\"UTF-8\">\n");
-      out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n");
-      out.write("        \n");
-      out.write("        <!--Add CSS Files-->\n");
-      out.write("\t<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/css/styles.css\">\n");
-      out.write("\t<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/css/bootstrap.min.css\">\n");
-      out.write("\t<link rel=\"stylesheet\"  type=\"text/css\" href=\"resources/fontawesome/css/font-awesome.min.css\">\n");
-      out.write("\t<link href=\"https://fonts.googleapis.com/css?family=Nunito:200,300,400,700,900\" rel=\"stylesheet\">\n");
-      out.write("        \n");
-      out.write("    </head>\n");
-      out.write("    <body>\n");
-      out.write("<!--\tNavigation Bar Start-->\n");
-      out.write("\t\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("<!DOCTYPE html>\r\n");
+      out.write("<html>\r\n");
+      out.write("    <head>\r\n");
+      out.write("        <title>Staff Login - Uva CareCare</title>\r\n");
+      out.write("        <meta charset=\"UTF-8\">\r\n");
+      out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n");
+      out.write("        \r\n");
+      out.write("        <!--Add CSS Files-->\r\n");
+      out.write("\t<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/css/styles.css\">\r\n");
+      out.write("\t<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/css/bootstrap.min.css\">\r\n");
+      out.write("\t<link rel=\"stylesheet\"  type=\"text/css\" href=\"resources/fontawesome/css/font-awesome.min.css\">\r\n");
+      out.write("\t<link href=\"https://fonts.googleapis.com/css?family=Nunito:200,300,400,700,900\" rel=\"stylesheet\">\r\n");
+      out.write("        \r\n");
+      out.write("    </head>\r\n");
+      out.write("    <body>\r\n");
+      out.write("<!--\tNavigation Bar Start-->\r\n");
+      out.write("\t\r\n");
       out.write("\t");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "include/navbar.jsp", out, false);
-      out.write("\n");
-      out.write("<!--Contents Start-->\n");
-      out.write("<div id=\"content\" class=\"container\">\n");
-      out.write("\t<div class=\"row\">\n");
-      out.write("            <div class=\"col-md-8 col-md-offset-2\">\n");
-      out.write("\t\t<div class=\"box\">\n");
-      out.write("                    <div class=\"box-header\">\n");
-      out.write("\t\t\t<center>\n");
-      out.write("                            <h2 style=\"text-transform: uppercase\">Staff login</h2>\n");
-      out.write("                            <p class=\"text-muted\">Uva CarCare Emplyee Login Panel</p>\n");
-      out.write("\t\t\t</center>\n");
-      out.write("\t\t</div>\n");
-      out.write("                    <form action=\"\" method=\"post\" enctype=\"multipart/form-data\">\n");
-      out.write("\t\t\t<div class=\"form-group\">\n");
-      out.write("                            <label>Email</label>\n");
-      out.write("                            <input type=\"email\" class=\"form-control\" name=\"email\" required>\n");
-      out.write("                        </div>\n");
-      out.write("                        <div class=\"form-group\">\n");
-      out.write("                            <label>Password</label>\n");
-      out.write("                            <input type=\"password\" class=\"form-control\" name=\"pass\" required>\n");
-      out.write("                        </div>\n");
-      out.write("                            <div class=\"text-center\">\n");
-      out.write("\t\t\t\t<button type=\"submit\" name=\"register\" class=\"btn btn-danger\" style=\"width: 50%;\">\n");
-      out.write("                                    <i class=\"fa fa-car\"></i> Login Now\n");
-      out.write("                                </button>\n");
-      out.write("                            </div>\n");
-      out.write("                                            \n");
-      out.write("                            <br>\n");
-      out.write("                            <br>\n");
-      out.write("                    </form>\n");
-      out.write("                </div>\n");
-      out.write("            </div>\n");
-      out.write("\t</div>\n");
-      out.write("</div>\n");
-      out.write("\t\n");
-      out.write("\n");
-      out.write("<!--Footer Start-->\n");
+      out.write("\r\n");
+      out.write("<!--Contents Start-->\r\n");
+      out.write("<div id=\"content\" class=\"container\">\r\n");
+      out.write("\t<div class=\"row\">\r\n");
+      out.write("            <div class=\"col-md-8 col-md-offset-2\">\r\n");
+      out.write("\t\t<div class=\"box\">\r\n");
+      out.write("                    <div class=\"box-header\">\r\n");
+      out.write("\t\t\t<center>\r\n");
+      out.write("                            <h2 style=\"text-transform: uppercase\">Staff login</h2>\r\n");
+      out.write("                            <p class=\"text-muted\">Uva CarCare Emplyee Login Panel</p>\r\n");
+      out.write("\t\t\t</center>\r\n");
+      out.write("\t\t</div>\r\n");
+      out.write("                    <form action=\"\" method=\"post\">\r\n");
+      out.write("\t\t\t<div class=\"form-group\">\r\n");
+      out.write("                            <label>Email</label>\r\n");
+      out.write("                            <input type=\"email\" class=\"form-control\" name=\"email\" required>\r\n");
+      out.write("                        </div>\r\n");
+      out.write("                        <div class=\"form-group\">\r\n");
+      out.write("                            <label>Password</label>\r\n");
+      out.write("                            <input type=\"password\" class=\"form-control\" name=\"pass\" required>\r\n");
+      out.write("                        </div>\r\n");
+      out.write("                            <div class=\"text-center\">\r\n");
+      out.write("\t\t\t\t<button type=\"submit\" name=\"login\" class=\"btn btn-danger\" style=\"width: 50%;\">\r\n");
+      out.write("                                    <i class=\"fa fa-car\"></i> Login Now\r\n");
+      out.write("                                </button>\r\n");
+      out.write("                            </div>\r\n");
+      out.write("                                            \r\n");
+      out.write("                            <br>\r\n");
+      out.write("                            <br>\r\n");
+      out.write("                    </form>\r\n");
+      out.write("                </div>\r\n");
+      out.write("            </div>\r\n");
+      out.write("\t</div>\r\n");
+      out.write("</div>\r\n");
+      out.write("\t\r\n");
+      out.write("\r\n");
+      out.write("<!--Footer Start-->\r\n");
       out.write("\t");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "include/footer.jsp", out, false);
-      out.write("\n");
-      out.write("<!--Add JavaScript Files-->\n");
-      out.write("\t<script src=\"resources/js/jquery.min.js\"></script>\t\n");
-      out.write("\t<script src=\"resources/js/bootstrap.min.js\"></script>\n");
-      out.write("        \n");
+      out.write("\r\n");
+      out.write("<!--Add JavaScript Files-->\r\n");
+      out.write("\t<script src=\"resources/js/jquery.min.js\"></script>\t\r\n");
+      out.write("\t<script src=\"resources/js/bootstrap.min.js\"></script>\r\n");
+      out.write("        \r\n");
       out.write("        ");
 
-                if(request.getParameter("register") != null){
+                if(request.getParameter("login") != null){
                     String uname = request.getParameter("email");
                     String pass = request.getParameter("pass");
                     Connection con = null;
-                
+    
                 try{
                     Class.forName("com.mysql.jdbc.Driver");
-                }catch(Exception e){
-                    out.println(e);
-                }
-                try{
                     con = DriverManager.getConnection("jdbc:mysql://localhost:3306/uvacarcare","root","");
                     String query = "SELECT * FROM users WHERE Email='"+uname+"' AND Password='"+pass+"'";
                     ResultSet rs;
                     Statement ps;
                     ps = con.createStatement();
                     rs = ps.executeQuery(query);
+                    
                     if(rs.next()){
-                        String userTtpe = rs.getString("userType");
-                        if(userTtpe.equals("Admin")){
-                            //session = request.getSession();
+                        String userType = rs.getString("userType");
+                        if(userType.equals("Admin")){
+                            
                             session.setAttribute("email",uname);
+                            session.setAttribute("utype",userType);
                             response.sendRedirect("admin.jsp");
+                            
+                        }else if(userType.equals("Emp")){
+                            
+                            session.setAttribute("email",uname);
+                            response.sendRedirect("finishjob.jsp");
+                            session.setAttribute("utype",userType);
+                        }
+                        else{
+      out.write("\r\n");
+      out.write("                            <script>alert(\"No User Found\");</script>\r\n");
+      out.write("                        ");
+
                         }
                     }else{
-                        out.print("dead");
+                       
+      out.write("\r\n");
+      out.write("                            <script>alert(\"No User Found\");</script>\r\n");
+      out.write("                        ");
+
                     }
                 }catch(Exception ex){
                     out.println(ex);    
@@ -150,10 +164,10 @@ public final class stafflogin_jsp extends org.apache.jasper.runtime.HttpJspBase
                 }
                 }
             
-      out.write("\n");
-      out.write("</body>\n");
-      out.write("</html>\n");
-      out.write("\n");
+      out.write("\r\n");
+      out.write("</body>\r\n");
+      out.write("</html>\r\n");
+      out.write("\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

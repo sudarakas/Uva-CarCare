@@ -27,24 +27,18 @@
                                                 <li>
                                                     <a href="admin.jsp">Admin</a>
 					 	</li>
-					 	<li>
-                                                    <a href="../index.jsp">Home</a>
-					 	</li>
-					 	<li>
-                                                    <a href="../aboutus.jsp">About Us</a>
-					 	</li>
-					 	<li>
-                                                    <a href="../gallery.jsp">Gallery</a>
-					 	</li>
-					 	<li>
-                                                    <a href="../conatctus.jsp">Contact Us</a>
-					 	</li>
                                                 <li>
                                                     <a href="../tarckappointment.jsp">Track Car</a>
 					 	</li>
-					 	<li class="blackMe">
-                                                    <a href="../reserve.jsp">Reserve Online</a>
-					 	</li>
+                                                <%
+                                                    if(session.getAttribute("email") != null){
+                                                %>
+                                                    <li>
+                                                        <a href="logout.jsp">Logout</a>
+                                                    </li>
+                                                <%
+                                                    }
+                                                %>
 					</ul>
 				</div>
 			</div>

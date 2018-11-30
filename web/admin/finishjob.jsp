@@ -1,28 +1,23 @@
 <%-- 
-    Document   : newappointment
-    Created on : Nov 25, 2018, 9:50:10 PM
+    Document   : finishjob
+    Created on : Dec 1, 2018, 1:46:09 AM
     Author     : NanoX
 --%>
 
-<%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <%
+     <%
         if(session.getAttribute("email") == null){
             response.sendRedirect("stafflogin.jsp");
         }
-        if(!session.getAttribute("utype").equals("Admin")){
-            response.sendRedirect("finishjob.jsp");
-        }
     %>
-    
     <head>
-        <title>New Appointments - Uva CareCare</title>
+        <title>Approved Appointments - Uva CareCare</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
@@ -58,11 +53,11 @@
 	<div class="row">
 		<div class="box">
                     <div class="col-lg-12">
-                    <h3 class="text-success text-uppercase text-center" style="font-weight: 600">New Appointments</h3>
+                    <h3 class="text-success text-uppercase text-center" style="font-weight: 600">Completed Jobs</h3>
                     <div class="panel panel-success">
                         <div class="panel-heading">
                             <div class="panel-title">
-                                <i class="fa fa-car"></i> View Details
+                                <i class="fa fa-desktop"></i> View Details
                             </div>
                         </div>
                         <div class="panel-body">
@@ -80,14 +75,22 @@
                                             <th>Date</th>
                                             <th>Time</th>
                                             <th>Msg</th>
-                                            <th>Approve</th>
-                                            <th>Reject</th>
+                                            <th>Complete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <%
-                                            String getNewAppoSql = "SELECT * FROM appoinment WHERE Status='New'";
-                                            PreparedStatement pst = conn.prepareCall(getNewAppoSql);
+                                            String userType = String.valueOf(session.getAttribute("utype"));
+                                            String uid = String.valueOf(session.getAttribute("uid"));
+                                            String sql;
+                                            if(userType.equalsIgnoreCase("Admin")){
+                                                sql = "SELECT * FROM appoinment WHERE InvoiceNo IN (SELECT InvoiceNo FROM job WHERE 1)";
+                                            }else{
+                                                 sql = "SELECT * FROM appoinment WHERE InvoiceNo IN (SELECT InvoiceNo FROM job WHERE empId='"+uid+"')";
+                                            }
+                                            
+                                            
+                                            PreparedStatement pst = conn.prepareCall(sql);
                                             ResultSet rt = pst.executeQuery();
                                             
                                             while(rt.next()){
@@ -103,8 +106,7 @@
                                                <td><%out.print(rt.getString(8));%></td>
                                                <td><%out.print(rt.getString(9));%></td>
                                                <td><%out.print(rt.getString(10));%></td>
-                                               <td><a href='approve.jsp?appId=<%out.print(rt.getString(1));%>' class='btn btn-success btn-sm'>Approve</a></td>
-                                               <td><a href='reject.jsp?appId=<%out.print(rt.getString(1));%>' class='btn btn-danger btn-sm'>Reject</a></td>
+                                               <td><a href='complete.jsp?invoiceNo=<%out.print(rt.getString(2));%>' class='btn btn-success btn-sm'>Completed</a></td>
                                            </tr>
                                            <%
                                             }
