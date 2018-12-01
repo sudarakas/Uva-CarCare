@@ -15,7 +15,7 @@
         if(session.getAttribute("email") == null){
             response.sendRedirect("stafflogin.jsp");
         }
-        if(session.getAttribute("utype") != "Admin"){
+        if(!session.getAttribute("utype").equals("Admin")){
             response.sendRedirect("finishjob.jsp");
         }
     %>

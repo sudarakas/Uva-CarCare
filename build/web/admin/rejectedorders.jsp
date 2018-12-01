@@ -1,17 +1,18 @@
 <%-- 
-    Document   : approvedappointment
-    Created on : Nov 30, 2018, 10:19:50 PM
+    Document   : rejectedorders
+    Created on : Nov 25, 2018, 9:50:10 PM
     Author     : NanoX
 --%>
 
+<%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-     <%
+    <%
         if(session.getAttribute("email") == null){
             response.sendRedirect("stafflogin.jsp");
         }
@@ -19,8 +20,9 @@
             response.sendRedirect("finishjob.jsp");
         }
     %>
+    
     <head>
-        <title>Approved Appointments - Uva CareCare</title>
+        <title>Rejected Orders - Uva CareCare</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
@@ -56,11 +58,11 @@
 	<div class="row">
 		<div class="box">
                     <div class="col-lg-12">
-                    <h3 class="text-primary text-uppercase text-center" style="font-weight: 600">Approved Appointments</h3>
-                    <div class="panel panel-primary">
+                    <h3 class="text-success text-uppercase text-center" style="font-weight: 600">Rejected Orders</h3>
+                    <div class="panel panel-success">
                         <div class="panel-heading">
                             <div class="panel-title">
-                                <i class="fa fa-desktop"></i> View Details
+                                <i class="fa fa-car"></i> View Details
                             </div>
                         </div>
                         <div class="panel-body">
@@ -78,12 +80,12 @@
                                             <th>Date</th>
                                             <th>Time</th>
                                             <th>Msg</th>
-                                            <th>Approve</th>
+                                   
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <%
-                                            String getNewAppoSql = "SELECT * FROM appoinment WHERE Status='Approved'";
+                                            String getNewAppoSql = "SELECT * FROM appoinment WHERE Status='Rejected'";
                                             PreparedStatement pst = conn.prepareCall(getNewAppoSql);
                                             ResultSet rt = pst.executeQuery();
                                             
@@ -100,7 +102,6 @@
                                                <td><%out.print(rt.getString(8));%></td>
                                                <td><%out.print(rt.getString(9));%></td>
                                                <td><%out.print(rt.getString(10));%></td>
-                                               <td><a href='duty.jsp?invoiceNo=<%out.print(rt.getString(2));%>' class='btn btn-primary btn-sm'>Assign Job</a></td>
                                            </tr>
                                            <%
                                             }
