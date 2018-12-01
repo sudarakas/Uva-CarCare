@@ -1,7 +1,17 @@
 # Uva-CarCare
-JSP Project - RAD UWU 
+	Mini Project for Rapid Application Development Subject
 	
-	* Always Commit 
-	* Do not share this Repo
-	* Please inform group before push 
-	* This is private repo
+	Used Languages/Frameworks:
+		* JSP
+		* HTML 5
+		* CSS3
+		* Jquery
+		* Bootstrap 3 (Mod)
+	
+	How to Use
+		* Download the project
+		* You find the uvacarcare.sql db in database folder, import it
+		* Open project folder in Netbeans
+		
+	
+	Thanks
