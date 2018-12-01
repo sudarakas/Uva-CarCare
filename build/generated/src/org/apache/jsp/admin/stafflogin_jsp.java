@@ -133,16 +133,19 @@ public final class stafflogin_jsp extends org.apache.jasper.runtime.HttpJspBase
                     
                     if(rs.next()){
                         String userType = rs.getString("userType");
+                        int userId = rs.getInt(1);
                         if(userType.equals("Admin")){
                             
                             session.setAttribute("email",uname);
                             session.setAttribute("utype",userType);
+                            session.setAttribute("uid", userId);
                             response.sendRedirect("admin.jsp");
                             
                         }else if(userType.equals("Emp")){
                             
                             session.setAttribute("email",uname);
                             response.sendRedirect("finishjob.jsp");
+                            session.setAttribute("uid", userId);
                             session.setAttribute("utype",userType);
                         }
                         else{

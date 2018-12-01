@@ -84,9 +84,9 @@
                                             String uid = String.valueOf(session.getAttribute("uid"));
                                             String sql;
                                             if(userType.equalsIgnoreCase("Admin")){
-                                                sql = "SELECT * FROM appoinment WHERE InvoiceNo IN (SELECT InvoiceNo FROM job WHERE 1)";
+                                                sql = "SELECT * FROM appoinment WHERE InvoiceNo IN (SELECT InvoiceNo FROM job WHERE 1) AND Status<>'Completed'";
                                             }else{
-                                                 sql = "SELECT * FROM appoinment WHERE InvoiceNo IN (SELECT InvoiceNo FROM job WHERE empId='"+uid+"')";
+                                                 sql = "SELECT * FROM appoinment WHERE InvoiceNo IN (SELECT InvoiceNo FROM job WHERE empId='"+uid+"') AND Status<>'Completed'";
                                             }
                                             
                                             
@@ -106,7 +106,7 @@
                                                <td><%out.print(rt.getString(8));%></td>
                                                <td><%out.print(rt.getString(9));%></td>
                                                <td><%out.print(rt.getString(10));%></td>
-                                               <td><a href='complete.jsp?invoiceNo=<%out.print(rt.getString(2));%>' class='btn btn-success btn-sm'>Completed</a></td>
+                                               <td><a href='confirmcomplete.jsp?appId=<%out.print(rt.getString(1));%>' class='btn btn-success btn-sm'>Confirm Completion</a></td>
                                            </tr>
                                            <%
                                             }
