@@ -1,4 +1,4 @@
-package org.apache.jsp;
+package org.apache.jsp.admin;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.DriverManager;
 import java.sql.Connection;
 
-public final class viewappointment_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class viewemployee_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -55,7 +55,7 @@ public final class viewappointment_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
       out.write("    <head>\r\n");
-      out.write("        <title>View Appointment - Uva CareCare</title>\r\n");
+      out.write("        <title>View Employee - Uva CareCare</title>\r\n");
       out.write("        <meta charset=\"UTF-8\">\r\n");
       out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n");
       out.write("        \r\n");
@@ -115,7 +115,7 @@ public final class viewappointment_jsp extends org.apache.jasper.runtime.HttpJsp
                 //Car Status
                 String invoiceNo = request.getParameter("invoiceno");
 
-                String getInvoiceStatusSql = "SELECT * FROM appoinment WHERE InvoiceNo='"+invoiceNo+"'";
+                String getInvoiceStatusSql = "SELECT * FROM users WHERE InvoiceNo='"+invoiceNo+"'";
                 PreparedStatement pst = conn.prepareCall(getInvoiceStatusSql);
                 ResultSet rt = pst.executeQuery();
 

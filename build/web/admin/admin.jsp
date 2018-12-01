@@ -71,16 +71,16 @@
                     <br><br><br>
                     <div class="col-md-12">
                         <div class="col-md-3">
-                            <input type="button" class="btn btn-success" style="width: 100%;" onclick="location.href='reserve.html';" value="Add Employee" />
+                            <input type="button" class="btn btn-success" style="width: 100%;" onclick="location.href='addemployee.jsp';" value="Add Employee" />
                         </div>
                         <div class="col-md-3">
-                            <input type="button" class="btn btn-success" style="width: 100%;" onclick="location.href='reserve.html';" value="View Employee" />
+                            <input type="button" class="btn btn-success" style="width: 100%;" onclick="location.href='viewemployee.jsp';" value="View Employee" />
                         </div>
                         <div class="col-md-3">
                             <input type="button" class="btn btn-success" style="width: 100%;" onclick="location.href='../tarckappointment.jsp';" value="Track Orders" />
                         </div>
                         <div class="col-md-3">
-                            <input type="button" class="btn btn-success" style="width: 100%;" onclick="location.href='reserve.html';" value="Rejected Orders" />
+                            <input type="button" class="btn btn-success" style="width: 100%;" onclick="location.href='rejectedorders.jsp';" value="Rejected Orders" />
                         </div>
                     </div>
 					

@@ -114,7 +114,7 @@ public final class admin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <br><br><br>\r\n");
       out.write("                    <div class=\"col-md-12\">\r\n");
       out.write("                        <div class=\"col-md-3\">\r\n");
-      out.write("                            <input type=\"button\" class=\"btn btn-success\" style=\"width: 100%;\" onclick=\"location.href='reserve.html';\" value=\"Add Employee\" />\r\n");
+      out.write("                            <input type=\"button\" class=\"btn btn-success\" style=\"width: 100%;\" onclick=\"location.href='addemployee.jsp';\" value=\"Add Employee\" />\r\n");
       out.write("                        </div>\r\n");
       out.write("                        <div class=\"col-md-3\">\r\n");
       out.write("                            <input type=\"button\" class=\"btn btn-success\" style=\"width: 100%;\" onclick=\"location.href='reserve.html';\" value=\"View Employee\" />\r\n");

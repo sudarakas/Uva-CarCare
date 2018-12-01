@@ -61,7 +61,9 @@ public final class newappointment_jsp extends org.apache.jasper.runtime.HttpJspB
         if(session.getAttribute("email") == null){
             response.sendRedirect("stafflogin.jsp");
         }
-        out.print(session.getAttribute("uType"));
+        if(!session.getAttribute("utype").equals("Admin")){
+            response.sendRedirect("finishjob.jsp");
+        }
     
       out.write("\r\n");
       out.write("    \r\n");
