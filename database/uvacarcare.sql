@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2018 at 04:24 AM
+-- Generation Time: Dec 01, 2018 at 09:12 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -45,29 +45,18 @@ CREATE TABLE `appoinment` (
 --
 
 INSERT INTO `appoinment` (`appoinmentId`, `InvoiceNo`, `Name`, `Email`, `PhoneNo`, `Service`, `ServiceCenter`, `Date`, `Time`, `Message`, `Status`) VALUES
-(1, '5279857700', 'Sudaraka', 'sudharakafb@gmail.com', '0713009095', 'Auto Car Wash with Vacuum', 'Badulla', '2018-11-26', '11am to 1pm', 'Tesla Model X5', 'Job Assigned'),
+(1, '5279857700', 'Sudaraka', 'sudharakafb@gmail.com', '0713009095', 'Auto Car Wash with Vacuum', 'Badulla', '2018-11-26', '11am to 1pm', 'Tesla Model X5', 'Completed'),
 (2, '8739372511', 'Menaka', 'menaka@nanolabs.lk', '0713654974', 'Car Service', 'Bandarawela', '2018-11-28', '3pm to 5pm', 'Dodge SUV', 'Job Assigned'),
 (3, '5238673156', 'Gayan', 'gayanrajitha1994@gmail.com', '0712354687', 'Auto Car Wash Only', 'Passara', '2018-11-30', '11am to 1pm', 'Toyota Axis', 'Job Assigned'),
 (4, '3999155073', 'Gayan', 'gayanrajitha1994@gmail.com', '0712354687', 'Car Wash with Vacuum', 'Hali Ela', '2018-12-12', '5pm to 7pm', 'Toyota SUV', 'Rejected'),
 (5, '8147311320', 'Sudaraka', 'sudharakafb@gmail.com', '0713009095', 'Auto Car Wash Only', 'Badulla', '2018-11-28', '11am to 1pm', 'Benz E3', 'Rejected'),
-(6, '1565719114', 'Gayan', 'gayanrajitha1994@gmail.com', '0715645124', 'Car Vacuum Only', 'Bandarawela', '2018-11-30', '11am to 1pm', 'Mazda Rx8', 'Job Assigned'),
-(7, '2609696311', 'Yasiru', 'sudharakafb@gmail.com', '0712392017', 'Auto Car Wash Only', 'Badulla', '2018-11-30', '9am to 11am', 'Tesla X5', 'New'),
-(8, '0466266943', 'Sapuni', 'sudharakafb@gmail.com', '0715696317', 'Auto Car Wash with Vacuum', 'Bandarawela', '2018-12-11', '1pm to 3pm', 'BMW i8', 'New'),
-(9, '6522329938', 'Sapuni', 'sudharakafb@gmail.com', '0715647893', 'Car Vacuum Only', 'Badulla', '2018-12-10', '7am to 9am', 'Lancer 2018', 'Approved'),
-(10, '4188512558', 'Namal Rajapaksha', 'namal@gmail.com', '0775689412', 'Car Wash with Vacuum', 'Hali Ela', '2018-11-30', '7am to 9am', 'Lamborghini', 'New');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `billing`
---
-
-CREATE TABLE `billing` (
-  `InvoiceNo` varchar(30) NOT NULL,
-  `BillID` varchar(30) NOT NULL,
-  `Amount` decimal(10,0) NOT NULL,
-  `Date` date NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+(6, '1565719114', 'Gayan', 'gayanrajitha1994@gmail.com', '0715645124', 'Car Vacuum Only', 'Bandarawela', '2018-11-30', '11am to 1pm', 'Mazda Rx8', 'Completed'),
+(7, '2609696311', 'Yasiru', 'sudharakafb@gmail.com', '0712392017', 'Auto Car Wash Only', 'Badulla', '2018-11-30', '9am to 11am', 'Tesla X5', 'Job Assigned'),
+(8, '0466266943', 'Sapuni', 'sudharakafb@gmail.com', '0715696317', 'Auto Car Wash with Vacuum', 'Bandarawela', '2018-12-11', '1pm to 3pm', 'BMW i8', 'Job Assigned'),
+(9, '6522329938', 'Sapuni', 'sudharakafb@gmail.com', '0715647893', 'Car Vacuum Only', 'Badulla', '2018-12-10', '7am to 9am', 'Lancer 2018', 'Job Assigned'),
+(10, '4188512558', 'Namal Rajapaksha', 'namal@gmail.com', '0775689412', 'Car Wash with Vacuum', 'Hali Ela', '2018-11-30', '7am to 9am', 'Lamborghini', 'New'),
+(11, '1S67L6NOHW', 'Teshan', 'gayanrajitha1994@gmail.com', '0713009096', 'Car Wash with Vacuum', 'Hali Ela', '2018-12-07', '9am to 11am', 'Toyota Axio', 'Rejected'),
+(12, 'ZAZWRQ81OW', 'Timira', 'gayanrajitha1994@gmail.com', '0785612365', 'Car Service', 'Bandarawela', '2018-12-24', '3pm to 5pm', 'Benz I8', 'Approved');
 
 -- --------------------------------------------------------
 
@@ -89,7 +78,10 @@ INSERT INTO `job` (`jobId`, `InvoiceNo`, `empId`) VALUES
 (1, '5279857700', 1),
 (2, '5238673156', 2),
 (3, '8739372511', 1),
-(4, '1565719114', 1);
+(4, '1565719114', 1),
+(5, '2609696311', 5),
+(6, '0466266943', 5),
+(7, '6522329938', 2);
 
 -- --------------------------------------------------------
 
@@ -100,7 +92,7 @@ INSERT INTO `job` (`jobId`, `InvoiceNo`, `empId`) VALUES
 CREATE TABLE `users` (
   `userId` int(11) NOT NULL,
   `Name` varchar(30) NOT NULL,
-  `Gender` varchar(5) NOT NULL,
+  `Gender` varchar(15) NOT NULL,
   `PhoneNo` int(10) NOT NULL,
   `NIC` varchar(30) NOT NULL,
   `Email` varchar(30) NOT NULL,
@@ -115,7 +107,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`userId`, `Name`, `Gender`, `PhoneNo`, `NIC`, `Email`, `Password`, `userType`) VALUES
 (1, 'Ruwan', 'Male', 713005612, '926452056v', 'sudharakafb@gmail.com', '123456', 'Emp'),
 (2, 'Sandaru', 'Male', 723654123, '902314562v', 'rajacfindia@gmail.com', 'abc', 'Emp'),
-(3, 'Gamini', 'Male', 713005613, '896541232v', 'gayanrajitha1994@gmail.com', 'qwer', 'Admin');
+(3, 'Gamini', 'Male', 713005613, '896541232v', 'gayanrajitha1994@gmail.com', 'qwer', 'Admin'),
+(4, 'Namal Rajapaksha', 'Female', 775689412, '895612456v', 'namal@gmail.com', '123456', 'Admin'),
+(5, 'Ranja', 'Male', 755612365, '902561425v', 'raji@gg.lk', 'zxcv', 'Emp');
 
 --
 -- Indexes for dumped tables
@@ -149,17 +143,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `appoinment`
 --
 ALTER TABLE `appoinment`
-  MODIFY `appoinmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `appoinmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `job`
 --
 ALTER TABLE `job`
-  MODIFY `jobId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `jobId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Constraints for dumped tables
 --
