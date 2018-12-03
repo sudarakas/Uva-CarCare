@@ -10,7 +10,7 @@
 	
 	How to Use
 		* Download the project
-		* You find the uvacarcare.sql db in database folder, import it
+		* You can find the uvacarcare.sql db in database folder and import it
 		* Open project folder in Netbeans
 		
 	
