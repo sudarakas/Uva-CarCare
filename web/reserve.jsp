@@ -68,7 +68,7 @@
                                                 </div>
                                                 <div class="form-group">
 							<label>Phone No</label>
-                                                        <input type="text" class="form-control" name="cpno" pattern="[0]{1}[0-9]{9}" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Phone is not valid, Please enter a valid phone number' : ''); if(this.checkValidity()) form.cus_cpass.pattern = this.value;" required>
+                                                        <input type="text" class="form-control" name="cpno" pattern="[0]{1}[0-9]{9}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Service</label>
