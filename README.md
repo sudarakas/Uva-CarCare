@@ -11,7 +11,7 @@
 	How to Use
 		* Download the project
 		* You can find the uvacarcare.sql db in database folder and import it
-			"mysql -uroot -p uvacarcare < uvacarcare.sql"
+			"mysql -u username -p password uvacarcare < uvacarcare.sql"
 		* Open project folder in Netbeans
 		
 	
